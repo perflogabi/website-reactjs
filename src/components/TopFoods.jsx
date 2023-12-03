@@ -4,7 +4,7 @@ import {data} from '../data/data.js'
 const TopFoods = () => {
 
     
-    const [foods, setFoods] = useState()
+    const [foods, setFoods] = useState([])
 
     const filterType = (category) => {
         setFoods(
@@ -49,7 +49,7 @@ const TopFoods = () => {
 
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
           
-        {foods.map((item, index) => (
+        {data.map((item, index) => (
           <div
             key={index}
             className='border shadow-lg rounded-lg hover:scale-105 duration-300'
@@ -66,6 +66,9 @@ const TopFoods = () => {
                   {item.price}
                 </span>
               </p>
+            </div>
+            <div className=' flex justify-center'>
+              <button className=' bg-orange-600 text-white border-none rounded-full text-2xl mb-2 hover:bg-orange-500'>+</button>
             </div>
           </div>
         ))}
