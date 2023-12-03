@@ -5,6 +5,8 @@ import { TbTruckDelivery } from "react-icons/tb"
 import { MdFavorite, MdFastfood } from "react-icons/md"
 import { FaUserFriends } from "react-icons/fa"
 import { FaCircleDollarToSlot } from "react-icons/fa6"
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
     const [nav, setNav] = useState(false)
@@ -47,7 +49,7 @@ const Navbar = () => {
                 <input className="bg-transparent p-2 w-full focus:outline-none" type="text" placeholder="Pesquisar lanches" />
             </div>
 
-            <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
+            <button id="addcart" className="bg-black text-white hidden md:flex items-center py-2 rounded-full {cartCount > 0 ? 'visible' : 'hidden'}"><a href="/Cart.jsx"></a>
                 <BsFillCartFill size={20} className="mr-2" /> Carrinho
             </button>
 
@@ -60,12 +62,12 @@ const Navbar = () => {
                 </h2>
                 <nav>
                     <ul className="flex flex-col p-4 text-gray-800">
-                        <li className="text-xl py-4 flex"><TbTruckDelivery size={25} className="mr-4" />Entregas</li>
-                        <li className="text-xl py-4 flex"><MdFastfood size={25} className="mr-4" />Cardápio</li>
-                        <li className="text-xl py-4 flex"><MdFavorite size={25} className="mr-4" />Favoritos</li>
-                        <li className="text-xl py-4 flex"><FaCircleDollarToSlot size={25} className="mr-4" />Pagamentos</li>
-                        <li className="text-xl py-4 flex"><AiFillTag size={25} className="mr-4" />Promoções</li>
-                        <li className="text-xl py-4 flex"><FaUserFriends size={25} className="mr-4" />Acionar Amigos</li>
+                        <li className="text-xl py-4  cursor-pointer flex flex-row"><BsFillCartFill  size={25} className="mr-4" /><a href="/entregas"></a>Carrinho</li>
+                        <li className="text-xl py-4  cursor-pointer flex flex-row"><a href="/cardapio"></a><MdFastfood size={25} className="mr-4" />Cardápio</li>
+                        <li className="text-xl py-4  cursor-pointer flex flex-row"><a href="/favoritos"></a><MdFavorite size={25} className="mr-4" />Favoritos</li>
+                        <li className="text-xl py-4  cursor-pointer flex flex-row"><a href="/pagamentos"></a><FaCircleDollarToSlot size={25} className="mr-4" />Pagamentos</li>
+                        <li className="text-xl py-4  cursor-pointer flex flex-row"><a href="/promocoes"></a><AiFillTag size={25} className="mr-4" />Promoções</li>
+                        <li className="text-xl py-4  cursor-pointer flex flex-row"><a href="/addamigos"></a><FaUserFriends size={25} className="mr-4" />Acionar Amigos</li>
                     </ul>
                 </nav>
             </div>

@@ -1,8 +1,14 @@
 import React, {useState} from 'react'
 import {data} from '../data/data.js'
+import {BsFillCartFill} from "react-icons/bs"
 
 const TopFoods = () => {
 
+    const [cartCount, setCartCount] = useState(0);
+
+    const addToCart = () => {
+      setCartCount((prevCount) => prevCount + 1);
+    };
     
     const [foods, setFoods] = useState([])
 
@@ -68,7 +74,7 @@ const TopFoods = () => {
               </p>
             </div>
             <div className=' flex justify-center'>
-              <button className=' bg-orange-600 text-white border-none rounded-full text-2xl mb-2 hover:bg-orange-500'>+</button>
+              <button onClick={addToCart} className=' bg-orange-600 text-white border-none rounded-full text-2xl mb-2 hover:bg-orange-500'><BsFillCartFill size={20} /></button>
             </div>
           </div>
         ))}
