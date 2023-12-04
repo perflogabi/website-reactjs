@@ -24,7 +24,7 @@ const Navbar = () => {
                 <div onClick={() => setNav(!nav)} className="cursor-pointer">
                     <AiOutlineMenu size={30} />
                 </div>
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2">Cardápio <span className="font-bold">Eats</span></h1>
+                <h1 className="text-2xl sm:text-2xl lg:text-3xl px-2">Cardápio <span className="font-bold">Eats</span></h1>
                 <div className="hidden lg:flex items-center bg-gray-200 rounded-full p-1 text-[14px]">
                     {status === 'aberto' ? (
                         <p

@@ -10,7 +10,7 @@ const TopFoods = () => {
       setCartCount((prevCount) => prevCount + 1);
     };
     
-    const [foods, setFoods] = useState([])
+    const [foods, setFoods] = useState(data)
 
     const filterType = (category) => {
         setFoods(
