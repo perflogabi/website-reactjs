@@ -4,6 +4,7 @@ export const data = [
         name: 'Burguer Tradicional',
         category: 'burguer',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '12.00'
     },
     {
@@ -11,6 +12,7 @@ export const data = [
         name: 'Burguer Double Bife',
         category: 'burguer',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '18.00'
     },
     {
@@ -18,6 +20,7 @@ export const data = [
         name: 'Burguer de Cordeiro',
         category: 'burguer',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '29.00'
     },
     {
@@ -25,6 +28,7 @@ export const data = [
         name: 'Pizza de Frango',
         category: 'pizza',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '18.00'
     },
     {
@@ -32,6 +36,7 @@ export const data = [
         name: 'Pizza Portuguesa',
         category: 'pizza',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '20.00'
     },
     {
@@ -39,6 +44,7 @@ export const data = [
         name: 'Pizza 4 queijos',
         category: 'pizza',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '12.00'
     },
     {
@@ -46,6 +52,7 @@ export const data = [
         name: 'Burguer Tradicional + Fritas',
         category: 'combo',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '12.00'
     },
     {
@@ -53,6 +60,7 @@ export const data = [
         name: 'Pizza de Frango + Refri',
         category: 'combo',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '22.00'
     },
     {
@@ -60,6 +68,7 @@ export const data = [
         name: 'Burguer + Anéis de cebola',
         category: 'combo',
         image: './img/combo.jpg',
+        description: 'Queijos, presunto, ovo, tomate, alface',
         price: '24.00'
     },
     {
@@ -67,6 +76,7 @@ export const data = [
         name: 'Suco de laranja',
         category: 'bebidas',
         image: './img/combo.jpg',
+        description: 'suco natural de laranja',
         price: '12.00'
     },
     {
@@ -74,6 +84,7 @@ export const data = [
         name: 'Suco de Morango',
         category: 'bebidas',
         image: './img/combo.jpg',
+        description: 'suco natural de morango',
         price: '12.00'
     },
     {
@@ -81,6 +92,7 @@ export const data = [
         name: 'Coca-Cola',
         category: 'bebidas',
         image: './img/combo.jpg',
+        description: 'Coca-cola 2l',
         price: '12.00'
     },
     {
@@ -88,6 +100,7 @@ export const data = [
         name: 'Torta',
         category: 'sobremesa',
         image: './img/combo.jpg',
+        description: 'torta de morango',
         price: '12.00'
     },
     {
@@ -95,6 +108,7 @@ export const data = [
         name: 'Brownie',
         category: 'sobremesa',
         image: './img/combo.jpg',
+        description: 'Brownie de gotas de chocolate',
         price: '12.00'
     }
 ];
