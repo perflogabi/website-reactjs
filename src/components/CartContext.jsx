@@ -10,26 +10,45 @@ const initialState = {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      return {
-        ...state,
-        cartItems: [...state.cartItems, action.payload],
-        cartCount: state.cartCount + action.payload.quantity,  // Atualize a contagem do carrinho
-      };
+      return addToCart(state, action.payload);
     // Adicione outros casos conforme necessário, como remover do carrinho, limpar carrinho, etc.
     default:
       return state;
   }
 };
 
+const addToCart = (state, newItem) => {
+  const existingItem = state.cartItems.find((cartItem) => cartItem.id === newItem.id);
+
+  if (existingItem) {
+    // Se o item já existe no carrinho, atualize apenas a quantidade
+    return {
+      ...state,
+      cartItems: state.cartItems.map((item) =>
+        item.id === newItem.id ? { ...item, quantity: item.quantity + newItem.quantity } : item
+      ),
+      cartCount: state.cartCount + newItem.quantity,
+    };
+  } else {
+    // Se o item não existe, adicione-o ao carrinho com quantidade 1
+    return {
+      ...state,
+      cartItems: [...state.cartItems, { ...newItem, quantity: newItem.quantity || 1 }],
+      cartCount: state.cartCount + newItem.quantity,
+    };
+  }
+};
+
+// Função utilitária para calcular o total
+const calculateTotal = (cartItems) => {
+  return cartItems.reduce((total, item) => total + item.quantity * parseFloat(item.price), 0).toFixed(2);
+};
+
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  const addToCart = (item) => {
-    dispatch({ type: 'ADD_TO_CART', payload: item });
-  };
-
   return (
-    <CartContext.Provider value={{ ...state, addToCart }}>
+    <CartContext.Provider value={{ ...state, calculateTotal, addToCart: (item) => dispatch({ type: 'ADD_TO_CART', payload: item }) }}>
       {children}
     </CartContext.Provider>
   );

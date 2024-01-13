@@ -11,13 +11,16 @@ const TopFoods = () => {
   const [originalData, setOriginalData] = React.useState(data);
   const [foods, setFoods] = useState(originalData);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
-  const handleAddToCart = (item, quantity) => {
+  const handleAddToCart = (item) => {
+    console.log('Item antes de adicionar ao carrinho:', item);
+    console.log('Quantidade antes de adicionar ao carrinho:', quantity);
     contextAddToCart({
       ...item,
-      quantity: (item.quantity || 0) + quantity
+      quantity: Number(quantity)
     });
-
+  
     closeModal();
   };
 
@@ -127,11 +130,11 @@ const TopFoods = () => {
         Carrinho <BsFillCartFill size={20} /> ({cartItems.length})
       </button>
 
-    
+
 
       {selectedItem && <CartItemModal item={selectedItem}
-          closeModal={closeModal}
-          addToCart={handleAddToCart}/>}
+        closeModal={closeModal}
+        handleAddToCart={handleAddToCart} />}
       {console.log('Final Selected Item State:', selectedItem)}
     </div>
   );

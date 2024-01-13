@@ -5,10 +5,10 @@ import { useCart } from './CartContext.jsx';
 
 const CartItemModal = ({ item, closeModal }) => {
   const { addToCart } = useCart();
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(item.quantity || 1);
 
   const handleAddToCart = () => {
-    addToCart(item, quantity);
+    addToCart({ ...item, quantity: Number(quantity) }); // Certifique-se de converter a quantidade para um número
     closeModal();
   };
 

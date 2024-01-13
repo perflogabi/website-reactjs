@@ -4,20 +4,19 @@ import Hero from "../components/Hero";
 import HeadlineCards from "../components/HeadlineCards";
 import TopFoods from "../components/TopFoods";
 import Category from "../components/Category";
-import { CartProvider } from '../components/CartContext';
 
 const Home = () => {
   return (
     <div>
-    
-      <Navbar/>
-      <Hero/>
-      <HeadlineCards/>
-      <CartProvider>
-        <TopFoods />
-      </CartProvider>
-      <Category/>
-    
+
+      <Navbar />
+      <Hero />
+      <HeadlineCards />
+
+      <TopFoods />
+
+      <Category />
+
     </div>
   )
 }

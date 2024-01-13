@@ -4,14 +4,10 @@ import { calculateTotal } from '../components/utils';
 import { useCart } from './CartContext';
 
 const CartPage = () => {
-
   const { cartItems } = useCart();
-  console.log("Cart Items:", cartItems);
-
   const navigate = useNavigate();
 
   const handlePayment = () => {
-  
     navigate('/payment');
   };
 
@@ -19,6 +15,7 @@ const CartPage = () => {
     <div>
       <h2>Carrinho de Compras</h2>
 
+      
       {cartItems.length > 0 ? (
         <div>
           <ul>
@@ -38,7 +35,6 @@ const CartPage = () => {
         <p>Carrinho vazio</p>
       )}
     </div>
-    
   );
 };
 
