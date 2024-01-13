@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { BsFillCartFill } from 'react-icons/bs';
 import "./cartItemModal.css"
+import { useCart } from './CartContext.jsx';
 
-const CartItemModal = ({ item, closeModal, addToCart }) => {
+const CartItemModal = ({ item, closeModal }) => {
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+
+  const handleAddToCart = () => {
+    addToCart(item, quantity);
+    closeModal();
+  };
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -34,7 +41,7 @@ const CartItemModal = ({ item, closeModal, addToCart }) => {
           <span>{quantity}</span>
           <button onClick={increaseQuantity}>+</button>
         </div>
-        <button onClick={() => addToCart(item, quantity)} className='add-to-cart-button'>
+        <button onClick={handleAddToCart} className='add-to-cart-button'>
           Adicionar ao Carrinho 
         </button>
       </div>

@@ -7,11 +7,19 @@ import CartPage from '../components/CartPage.jsx'
 import { useCart } from './CartContext.jsx';
 
 const TopFoods = () => {
-  const [cartCount, setCartCount] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
-  const [originalData, setOriginalData] = useState(data);
+  const { cartItems, setCartItems, cartCount, addToCart: contextAddToCart } = useCart();
+  const [originalData, setOriginalData] = React.useState(data);
   const [foods, setFoods] = useState(originalData);
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleAddToCart = (item, quantity) => {
+    contextAddToCart({
+      ...item,
+      quantity: (item.quantity || 0) + quantity
+    });
+
+    closeModal();
+  };
 
   useEffect(() => {
     setFoods(originalData);
@@ -19,10 +27,10 @@ const TopFoods = () => {
 
   const navigate = useNavigate();
 
-
   const openModal = (item) => {
     console.log('Open Modal:', item);
     setSelectedItem(item);
+    console.log('Selected Item State:', selectedItem);
   };
 
   const closeModal = () => {
@@ -116,12 +124,15 @@ const TopFoods = () => {
       </div>
 
       <button onClick={goToCartPage} className='fixed bottom-4 right-4 bg-orange-600 text-white p-3 rounded-full hover:bg-orange-500'>
-        Carrinho <BsFillCartFill size={20} /> ({cartCount})
+        Carrinho <BsFillCartFill size={20} /> ({cartItems.length})
       </button>
 
     
 
-      {selectedItem && <CartItemModal item={selectedItem} closeModal={closeModal} addToCart={addToCart} />}
+      {selectedItem && <CartItemModal item={selectedItem}
+          closeModal={closeModal}
+          addToCart={handleAddToCart}/>}
+      {console.log('Final Selected Item State:', selectedItem)}
     </div>
   );
 };

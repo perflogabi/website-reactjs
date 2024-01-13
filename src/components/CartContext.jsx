@@ -4,6 +4,7 @@ const CartContext = createContext();
 
 const initialState = {
   cartItems: [],
+  cartCount: 0,  // Adicione o estado para contagem do carrinho
 };
 
 const cartReducer = (state, action) => {
@@ -12,6 +13,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
+        cartCount: state.cartCount + action.payload.quantity,  // Atualize a contagem do carrinho
       };
     // Adicione outros casos conforme necessário, como remover do carrinho, limpar carrinho, etc.
     default:
@@ -38,7 +40,7 @@ const useCart = () => {
   if (!context) {
     throw new Error('useCart must be used within a CartProvider');
   }
-  return context;
+  return { ...context };
 };
 
 export { CartProvider, useCart };

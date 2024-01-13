@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import HeadlineCards from "../components/HeadlineCards";
 import TopFoods from "../components/TopFoods";
 import Category from "../components/Category";
+import { CartProvider } from '../components/CartContext';
 
 const Home = () => {
   return (
@@ -12,7 +13,9 @@ const Home = () => {
       <Navbar/>
       <Hero/>
       <HeadlineCards/>
-      <TopFoods/>
+      <CartProvider>
+        <TopFoods />
+      </CartProvider>
       <Category/>
     
     </div>

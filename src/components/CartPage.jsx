@@ -6,6 +6,7 @@ import { useCart } from './CartContext';
 const CartPage = () => {
 
   const { cartItems } = useCart();
+  console.log("Cart Items:", cartItems);
 
   const navigate = useNavigate();
 
@@ -37,6 +38,7 @@ const CartPage = () => {
         <p>Carrinho vazio</p>
       )}
     </div>
+    
   );
 };
 
