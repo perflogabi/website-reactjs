@@ -33,7 +33,7 @@ const CartPage = () => {
             </ul>
 
             <p className=' py-4 font-bold'>Total: {calculateTotal(cartItems)}</p>
-            <button onClick={handleGoBack} className=' py-2 mb-6 mt-6 mr-2'>Adicionar mais itens</button>
+            <button onClick={handleGoBack} className=' bg-orange-200 py-2 mb-6 mt-6 mr-2'>Adicionar mais itens</button>
 
             {/* Botão para ir para o pagamento */}
             <button onClick={handlePayment} className='bg-orange-500 text-white px-4 py-2 rounded-md hover:text-orange-700 hover:bg-orange-300 focus:outline-none focus:ring focus:border-blue-300 animate-pulse duration-1000'>Ir para o Pagamento</button>
