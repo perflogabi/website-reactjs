@@ -16,9 +16,9 @@ const CartPage = () => {
   };
 
   return (
-    <div className="w-auto border shadow-md rounded-lg p-8 flex justify-center flex-col items-center">
-      <div className=' py-8'>
-        <h2 className=' font-bold text-3xl text-orange-400 py-4'>Carrinho de Compras</h2>
+    <div className="   w-auto border shadow-md rounded-lg p-8 flex justify-center flex-col items-center">
+      <div className=' border shadow-md py-8 px-8 rounded'>
+        <h2 className=' font-bold text-3xl text-orange-400 py-4 shadow-lg text-center'>Carrinho de Compras</h2>
         <h3 className=' font-bold py-3'>Detalhes do Pedido</h3>
 
 
