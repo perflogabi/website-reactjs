@@ -73,7 +73,7 @@ const TopFoods = () => {
         <div>
           <p className='font-bold text-gray-700'>Filtro</p>
           <div className='flex justify-between flex-wrap'>
-            <button onClick={() => filterType('todos')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>
+            <button onClick={() => filtertType('todos')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>
               Todos
             </button>
             <button onClick={() => filterType('burguer')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>
