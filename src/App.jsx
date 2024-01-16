@@ -6,10 +6,12 @@ import Carrinho from "./components/CartPage"
 import Cardapio from "./pages/Cardapio"
 import Relatorios from "./pages/Relatorios"
 import Favoritos from "./pages/Favoritos"
-import Pagamentos from "./pages/Pagamentos"
 import Promocoes from "./pages/Promocoes"
 import AddAmigos from "./pages/AddAmigos"
 import { CartProvider } from "./components/CartContext"
+import PaymentPage from "./components/PaymentPage"
+import ProcessToConfirmation from "./components/ProcessToConfirmation"
+import ConfirmStage2 from "./components/ConfirmStage2"
 
 
 function App() {
@@ -24,7 +26,9 @@ function App() {
               <Route path="cardapio" element={<Cardapio />} />
               <Route path="relatorios" element={<Relatorios />} />
               <Route path="favoritos" element={<Favoritos />} />
-              <Route path="pagamentos" element={<Pagamentos />} />
+              <Route path="/confirmation" element={< ProcessToConfirmation/>}/>
+              <Route path="/confirmationStage2" element={< ConfirmStage2/>}/>
+              <Route path="/payment" element={<PaymentPage />} />
               <Route path="promocoes" element={<Promocoes />} />
               <Route path="acionaramigos" element={<AddAmigos />} />
             </Route>

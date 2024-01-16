@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { calculateTotal } from '../components/utils';
 import { useCart } from './CartContext';
+import PaymentPage from './PaymentPage';
 
 const CartPage = () => {
   const { cartItems } = useCart();
@@ -27,12 +28,12 @@ const CartPage = () => {
             <ul>
               {cartItems.map((item) => (
                 <li key={item.id} className=' py-2 '>
-                  {item.name} : Quantidade: {item.quantity} , Preço: {item.price * item.quantity}
+                  {item.name} : Quantidade: {item.quantity},  Preço: R${item.price * item.quantity}
                 </li>
               ))}
             </ul>
 
-            <p className=' py-4 font-bold'>Total: {calculateTotal(cartItems)}</p>
+            <p className=' py-4 font-bold'>Total: R${calculateTotal(cartItems)}</p>
             <button onClick={handleGoBack} className=' bg-orange-200 py-2 mb-6 mt-6 mr-2'>Adicionar mais itens</button>
 
             {/* Botão para ir para o pagamento */}
