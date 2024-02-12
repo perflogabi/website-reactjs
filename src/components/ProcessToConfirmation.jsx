@@ -7,7 +7,8 @@ const ProcessToConfirmation = () => {
   const navigate = useNavigate();
 
   const handleConfirmationStage2 = () => {
-    navigate('/confirmationStage2');
+    // Passando o nome como parte dos parâmetros de navegação
+    navigate('/confirmationStage2', { state: { name } });
   };
 
   return (

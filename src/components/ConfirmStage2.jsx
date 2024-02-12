@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, } from 'react-router-dom';
 import { useCart } from './CartContext';
 import { calculateTotal } from '../components/utils';
 
 const ConfirmStage2 = () => {
+    const location = useLocation();
+    const { name } = location.state;
+    const [phoneNumber, setPhoneNumber] = useState('');
+
     const [deliveryOption, setDeliveryOption] = useState('');
     const [paymentOption, setPaymentOption] = useState('');
     const [orderStatus, setOrderStatus] = useState('Aceito');
     const { cartItems } = useCart();
+
+    const handlePhoneNumberChange = (e) => {
+        setPhoneNumber(e.target.value);
+    };
 
     const handleDeliveryOption = (option) => {
         setDeliveryOption(option);
@@ -23,16 +31,60 @@ const ConfirmStage2 = () => {
             // Aqui você pode realizar a lógica necessária para finalizar o pedido
             // Pode enviar os detalhes para o backend, atualizar o estado do pedido, etc.
             setOrderStatus('Em Preparação');
+            sendWhatsAppMessage();
         } else {
             // Mostre uma mensagem de erro se alguma opção estiver faltando
             alert('Por favor, escolha uma opção de retirada e uma opção de pagamento.');
         }
     };
 
+    const sendWhatsAppMessage = () => {
+        let message = `Pedido de ${name}:\n\n`; // Incluindo o nome preenchido na página de confirmação
+    
+        message += 'Detalhes do Pedido:\n';
+        cartItems.forEach((item) => {
+            message += `${item.name} - Quantidade: ${item.quantity} - Preço: R$${item.price * item.quantity}\n`;
+        });
+        message += `\nTotal: R$${calculateTotal(cartItems)}\n`;
+    
+        // Adicionando emojis para forma de pagamento e forma de entrega
+        message += '\nForma de Entrega: ';
+        if (deliveryOption === 'Retirada no Local') {
+            message += '🏠 Retirada no Local\n';
+        } else if (deliveryOption === 'Delivery') {
+            message += '🚚 Delivery\n';
+        }
+    
+        message += 'Forma de Pagamento: ';
+        if (paymentOption === 'Pix') {
+            message += '💳 Pix\n';
+        } else if (paymentOption === 'Dinheiro') {
+            message += '💵 Dinheiro\n';
+        } else if (paymentOption === 'Cartão na Entrega') {
+            message += '💳💰 Cartão na Entrega\n';
+        }
+    
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://wa.me/5555999491892?text=${encodedMessage}`;
+    
+        window.open(whatsappURL, '_blank');
+    };
+
+
+
+
     return (
+        
         <div className="flex items-center justify-center h-screen">
             <div className="bg-white shadow-md p-6 rounded-md max-w-md w-full">
                 <div className="mb-6">
+                <div>
+            <h2>Confirmação dos Dados</h2>
+            <p>Para realizar seu pedido, precisamos de algumas informações:</p>
+            <p>Seu número de celular é: {phoneNumber}</p>
+            <p>Seu nome completo é: {name}</p>
+            {/* Restante do seu código */}
+        </div>
                     <h2 className="text-3xl font-bold mb-4 text-orange-500">Escolha a Forma de Entrega</h2>
                     <div className="flex flex-row gap-3">
                         <div className="mb-4">
