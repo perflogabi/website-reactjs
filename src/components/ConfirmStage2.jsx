@@ -6,16 +6,14 @@ import { calculateTotal } from '../components/utils';
 const ConfirmStage2 = () => {
     const location = useLocation();
     const { name } = location.state;
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const { phoneNumber } = location.state;
 
     const [deliveryOption, setDeliveryOption] = useState('');
     const [paymentOption, setPaymentOption] = useState('');
     const [orderStatus, setOrderStatus] = useState('Aceito');
     const { cartItems } = useCart();
 
-    const handlePhoneNumberChange = (e) => {
-        setPhoneNumber(e.target.value);
-    };
+
 
     const handleDeliveryOption = (option) => {
         setDeliveryOption(option);
@@ -40,13 +38,13 @@ const ConfirmStage2 = () => {
 
     const sendWhatsAppMessage = () => {
         let message = `Pedido de ${name}:\n\n`; // Incluindo o nome preenchido na página de confirmação
-    
+
         message += 'Detalhes do Pedido:\n';
         cartItems.forEach((item) => {
             message += `${item.name} - Quantidade: ${item.quantity} - Preço: R$${item.price * item.quantity}\n`;
         });
         message += `\nTotal: R$${calculateTotal(cartItems)}\n`;
-    
+
         // Adicionando emojis para forma de pagamento e forma de entrega
         message += '\nForma de Entrega: ';
         if (deliveryOption === 'Retirada no Local') {
@@ -54,7 +52,7 @@ const ConfirmStage2 = () => {
         } else if (deliveryOption === 'Delivery') {
             message += '🚚 Delivery\n';
         }
-    
+
         message += 'Forma de Pagamento: ';
         if (paymentOption === 'Pix') {
             message += '💳 Pix\n';
@@ -63,10 +61,10 @@ const ConfirmStage2 = () => {
         } else if (paymentOption === 'Cartão na Entrega') {
             message += '💳💰 Cartão na Entrega\n';
         }
-    
+
         const encodedMessage = encodeURIComponent(message);
         const whatsappURL = `https://wa.me/5555999491892?text=${encodedMessage}`;
-    
+
         window.open(whatsappURL, '_blank');
     };
 
@@ -74,17 +72,14 @@ const ConfirmStage2 = () => {
 
 
     return (
-        
+
         <div className="flex items-center justify-center h-screen">
             <div className="bg-white shadow-md p-6 rounded-md max-w-md w-full">
                 <div className="mb-6">
-                <div>
-            <h2>Confirmação dos Dados</h2>
-            <p>Para realizar seu pedido, precisamos de algumas informações:</p>
-            <p>Seu número de celular é: {phoneNumber}</p>
-            <p>Seu nome completo é: {name}</p>
-            {/* Restante do seu código */}
-        </div>
+                    <div>
+                        <h2>Olá, {name}</h2>
+
+                    </div>
                     <h2 className="text-3xl font-bold mb-4 text-orange-500">Escolha a Forma de Entrega</h2>
                     <div className="flex flex-row gap-3">
                         <div className="mb-4">
@@ -171,32 +166,32 @@ const ConfirmStage2 = () => {
                     </button>
                 </div>
 
-                
+
                 {/* Detalhes do Pedido e Barra de Status */}
                 {orderStatus !== 'Aceito' && (
                     <div className="mt-6">
                         <h2 className="text-3xl font-bold mb-4 text-orange-500">Detalhes do Pedido</h2>
                         <p>Itens do Carrinho:</p>
                         <div className=' border shadow-md py-8 px-8 rounded'>
-                    <h3 className=' font-bold py-3'>Detalhes do Pedido</h3>
+                            <h3 className=' font-bold py-3'>Detalhes do Pedido</h3>
 
 
-                    {cartItems.length > 0 ? (
-                        <div>
-                            <ul>
-                                {cartItems.map((item) => (
-                                    <li key={item.id} className=' py-2 '>
-                                        {item.name} : Quantidade: {item.quantity},  Preço: R${item.price * item.quantity}
-                                    </li>
-                                ))}
-                            </ul>
+                            {cartItems.length > 0 ? (
+                                <div>
+                                    <ul>
+                                        {cartItems.map((item) => (
+                                            <li key={item.id} className=' py-2 '>
+                                                {item.name} : Quantidade: {item.quantity},  Preço: R${item.price * item.quantity}
+                                            </li>
+                                        ))}
+                                    </ul>
 
-                            <p className=' py-4 font-bold'>Total: R${calculateTotal(cartItems)}</p>
+                                    <p className=' py-4 font-bold'>Total: R${calculateTotal(cartItems)}</p>
+                                </div>
+                            ) : (
+                                <p>Carrinho vazio</p>
+                            )}
                         </div>
-                    ) : (
-                        <p>Carrinho vazio</p>
-                    )}
-                </div>
                         <p>Forma de Retirada: {deliveryOption}</p>
                         <p>Forma de Pagamento: {paymentOption}</p>
                         <div className="mt-4">
